@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model DataTransferSherzan.Models.FlagsModel
+@using (Html.BeginForm("Index", "FlagsModel", FormMethod.Get))
+{
+<div class="text-center">
+    <h1 class="display-4">Olympics 2020</h1>
+    <div class="row">
+        <div class="column">
+            <div>
+               @Html.DropDownList("gameFilter", new SelectList(Model.GameFilters))
+                @*<select>
+                    @foreach (string item in Model.GameFilters)
+                    {
+                        <option value="@item">@item</option>}
+                </select>*@
+            </div>
+            <div>
+                @Html.DropDownList("categoryFilter", new SelectList(Model.CategoryFilters))
+                @*<select>
+                    @foreach (string item in Model.CategoryFilters)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>*@
+            </div>
+            <input type="submit" value="Filter" />
+        </div>
+        <div class="column"><div style="width:10px;"> </div></div>
+        <div align="left" ;>
+            <div class="column">
+                @foreach (flag item in Model.Flags)
+                {
+                    <a href=""><img src="./images/@item.ImagePath" alt="@item.ToolTip" title="@item.ToolTip" /></a><br>
+                }
+
+                <label id="lblUserName" runat="server"></label>
+
+            </div>
+            </div>
+        </div>
+    </div>
+}
